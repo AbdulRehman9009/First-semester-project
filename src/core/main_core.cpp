@@ -2,13 +2,18 @@
 #include "level.h"
 #include "logger.h"
 #include "viewer_iface.h"
+#include"util.h"
 #include <iostream>
 
+using namespace std;
+
 int main() {
+
     // Player State Primitives
     int playerFloor = 1;
     int playerRoom = 1;
     int energy = INITIAL_ENERGY;
+
     int time = INITIAL_TIME;
     int score = INITIAL_SCORE;
     
