@@ -33,10 +33,8 @@ bool unlockFloor3Door(const char inventory[MAX_INVENTORY_CAPACITY], int inventor
 bool installFuseControlPanel(char inventory[MAX_INVENTORY_CAPACITY], int& inventoryCount,
                              bool objectives[NUM_OBJECTIVES], int& score)
 {
-   if(!objectives[OBJ_FUSE_COLLECTED] || !objectives[OBJ_FUSE_INSTALLED])
+   if(!objectives[OBJ_FUSE_COLLECTED] || objectives[OBJ_FUSE_INSTALLED])
    return 0;
-if(!hasItem(inventory,inventoryCount,'*'))
-return 0;
 if(!removeItem(inventory,inventoryCount,'*'))
 return 0;
 objectives[OBJ_FUSE_INSTALLED]=true;

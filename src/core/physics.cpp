@@ -18,14 +18,15 @@ bool isDirectlyConnected(int fromF, int fromR, int toF, int toR,
             int floorI = fromF -1;
             int roomI = min(fromR,toR) - 1;
             int con = horizontalConn[floorI][roomI];
+            if(con == CONN_SOLID_WALL || con == CONN_NONE) return false;
             outConnType = con;
             return true;
         }
         if(fromF != toF){
             if((fromR == 1 && toR==1)){    
-                if(abs(fromF - toF) == 1 && (fromF != 3 && toF !=4)){outConnType = 'S'; return true;  }// Staircases
+                if(abs(fromF - toF) == 1 && !(fromF == 3 && toF == 4) && !(fromF == 4 && toF == 3)){outConnType = 'S'; return true;  }// Staircases
             }
-            if(abs(fromF - toF) == 1 && (fromF < 3 && toF < 3) && (fromR == 2 || fromR == 1) && (toR == 2 || toR == 1)){ outConnType = '1'; return true;}
+            if(abs(fromF - toF) == 1 && (fromF < 3 && toF < 3) && (fromR == toR) && (fromR == 3 || fromR == 2)){ outConnType = '1'; return true;}
             if(fromR == 4 && toR == 4 && toF!=3 && fromF!=3 && (fromF != 1 && toF != 1)){
                 outConnType = '2';
                 return true;
@@ -84,7 +85,7 @@ bool removeItem(char inventory[MAX_INVENTORY_CAPACITY], int& inventoryCount, cha
     for(int i = 0; i< inventoryCount; i++){
         if(inventory[i] == itemSymbol){ inventory[i] = -1; found = true;  break;}
     }
-    if(found) return false;
+    if(!found) return false;
     int insert = 0;
     for(int i = 0; i< inventoryCount; i++){
         if(inventory[i] != -1){

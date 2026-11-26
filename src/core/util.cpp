@@ -6,13 +6,13 @@
 using namespace std;
 
 // Primitive helper utilities, clamping, and screen control
-int clampInt(int val, int minVal, int maxVal){
+    int clampInt(int val, int minVal, int maxVal){
     if(val < minVal) return minVal;
     if(val > maxVal) return maxVal;
     return val;
 }
 
-void trimWhitespace(char* str){
+    void trimWhitespace(char* str){
     const int len = strlen(str);
 
     for(int i = len-1; i>=0; i--){
@@ -29,7 +29,7 @@ void trimWhitespace(char* str){
     }
 }
 
-    bool stringEquals(const char *a, const char *b){
+bool stringEquals(const char *a, const char *b){
         if(strlen(a) != strlen(b)) return 0;
         for(int i = 0; i< strlen(a); i++){
             if(a[i] != b[i]) return 0;
